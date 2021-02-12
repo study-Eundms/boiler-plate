@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {loginUser} from '../../../_actions/user_action'
-function LoginPage(){
+function LoginPage(props){
     const dispatch = useDispatch()
     //React Hook
     const [Email, setEmail] = useState("")
@@ -10,7 +10,7 @@ function LoginPage(){
     const onEmailHandler=(event)=>{
         setEmail(event.currentTarget.value)
     }
-    const onPasswordHanler=(event)=>{
+    const onPasswordHandler=(event)=>{
         setPassword(event.currentTarget.value)
     }
     const onSubmitHandler=(event)=>{
@@ -25,6 +25,13 @@ function LoginPage(){
         password:Password
     }
     dispatch(loginUser(body))
+        .then(response=>{
+            if(response.payload.loginSuccess){
+                props.history.push('/')
+            }else{
+                alert('Error`')
+            }
+        })
     }
     return(
         <div style={{display: 'flex',justifyContent:'center',alignItems:'center',width:'100%',height:'100vh'}}>
@@ -35,7 +42,7 @@ function LoginPage(){
                 <label>Email</label>
                 <input type="email" value={Email} onChange={onEmailHandler}/>
                 <label>Password</label>
-                <input type="password" value={Password} onChange={onPasswordHanler}/>
+                <input type="password" value={Password} onChange={onPasswordHandler}/>
                 <br/>
                 <button type="submit">Login</button>
 
