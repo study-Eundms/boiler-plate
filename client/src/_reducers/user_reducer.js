@@ -10,6 +10,7 @@ export default function user(state={},action){
             return {...state, loginSuccess:action.payload}
         case REGISTER_USER:
             return {...state, registerSuccess:action.payload}
+        
         default:
             return state;
     }
