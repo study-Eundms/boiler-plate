@@ -2,14 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import * as serviceWorker from  './serviceWorker';
 import {Provider} from 'react-redux';
 import 'antd/dist/antd.css';
+
+import reportWebVitals from './reportWebVitals';
 
 import{applyMiddleware,createStore}from 'redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
 import Reducer from './_reducers'
+
 const createStoreWithMiddleware=applyMiddleware(promiseMiddleware,ReduxThunk)(createStore)
 ReactDOM.render(
 

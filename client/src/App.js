@@ -11,7 +11,8 @@ import RegisterPage from './components/views/RegisterPage/RegisterPage'
 
 function App() {
   return (
-
+//Provider를 통하여 프로젝트에 리덕스를 연결시키기 위해 BrowserRouter사용
+//exact가 없다면?
     <Router>
     <div>
     <Switch>
